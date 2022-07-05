@@ -3,7 +3,7 @@
 /// TODO remove float externs when file is finished and float data is removed from asm
 extern f32 lbl_804D9830;
 
-void ftIcelimber_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
+void ftIceClimberOnItemPickup(HSD_GObj* gobj, BOOL arg1)
 {
     s32 result, switched_res, unused;
 
@@ -33,32 +33,32 @@ void ftIcelimber_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
     }
 }
 
-void func_8011EE18(HSD_GObj* fighterObj) {
+void ftIceClimber_OnItemInvisible(HSD_GObj* fighterObj) {
     Fighter* fighter = fighterObj->user_data;
     if (!func_8026B2B4(fighter->x1974_heldItem)) {
         func_80070CC4(fighterObj, 1);
     }
 }
 
-void func_8011EE60(HSD_GObj *fighterObj) {
+void ftIceClimber_OnItemVisible(HSD_GObj *fighterObj) {
     Fighter* fighter = fighterObj->user_data;
     if (!func_8026B2B4(fighter->x1974_heldItem)) {
         func_80070C48(fighterObj, 1);
     }
 }
 
-void func_8011EEA8(HSD_GObj* fighterObj, s32 arg1) {
+void ftIceClimber_OnItemRelease(HSD_GObj* fighterObj, s32 arg1) {
     func_80070FB4(fighterObj, 1, -1);
     if (arg1) {
         func_80070CC4(fighterObj, 1);
     }
 }
 
-void ftIcelimber_OnLoadForNana(Fighter* fighter) {
+void ftIceClimberOnLoadForNana(Fighter* fighter) {
     PUSH_ATTRS(fighter, ftIceClimberAttributes);
 }
 
-void ftIcelimber_OnLoad(HSD_GObj* fighterObj) {
+void ftIceClimberOnLoad(HSD_GObj* fighterObj) {
 
     s32 unused;
     Fighter* fighter = fighterObj->user_data;
@@ -77,7 +77,7 @@ void ftIcelimber_OnLoad(HSD_GObj* fighterObj) {
 
 }
 
-void ftIcelimber_OnDeath(HSD_GObj* fighterObj) {
+void ftIceClimberOnDeath(HSD_GObj* fighterObj) {
     Fighter* fighter = fighterObj->user_data;
     ftIceClimberAttributes* attr = fighter->x2D4_specialAttributes;
     func_80074A4C(fighterObj, 0U, 0);

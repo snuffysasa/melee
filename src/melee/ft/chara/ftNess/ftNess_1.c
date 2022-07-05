@@ -78,7 +78,7 @@ void ftNess_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
     }
 }
 
-void func_80114A48(HSD_GObj* gobj)
+void ftNess_OnItemInvisible(HSD_GObj* gobj)
 {
     Fighter* ft = gobj->user_data;
 
@@ -87,7 +87,7 @@ void func_80114A48(HSD_GObj* gobj)
     }
 }
 
-void func_80114A90(HSD_GObj* gobj)
+void ftNess_OnItemVisible(HSD_GObj* gobj)
 {
     Fighter* ft = gobj->user_data;
 
@@ -96,7 +96,7 @@ void func_80114A90(HSD_GObj* gobj)
     }
 }
 
-void func_80114AD8(HSD_GObj* gobj, s32 arg1)
+void ftNess_OnItemRelease(HSD_GObj* gobj, s32 arg1)
 {
     func_80070FB4(gobj, 1, -1);
     if (arg1 != 0) {

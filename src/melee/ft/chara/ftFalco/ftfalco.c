@@ -39,7 +39,7 @@ void ftFalco_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
     }
 }
 
-void func_80149BE0(HSD_GObj* gobj)
+void ftFalco_OnItemInvisible(HSD_GObj* gobj)
 {
     Fighter* ft = gobj->user_data;
 
@@ -48,7 +48,7 @@ void func_80149BE0(HSD_GObj* gobj)
     }
 }
 
-void func_80149C28(HSD_GObj* gobj)
+void ftFalco_OnItemVisible(HSD_GObj* gobj)
 {
     Fighter* ft = gobj->user_data;
 
@@ -57,7 +57,7 @@ void func_80149C28(HSD_GObj* gobj)
     }
 }
 
-void func_80149C70(HSD_GObj* gobj, s32 arg1)
+void ftFalco_OnItemRelease(HSD_GObj* gobj, s32 arg1)
 {
     func_80070FB4(gobj, 1, -1);
     if (arg1 != 0) {
