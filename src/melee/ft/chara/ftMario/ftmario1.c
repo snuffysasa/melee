@@ -73,29 +73,7 @@ void ftMario_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
     }
 }
 
-void ftMario_OnItemInvisible(HSD_GObj* gobj) {
-    Fighter* ft = getFighter(gobj);
-
-    if (func_8026B2B4(ft->x1974_heldItem) == 0) {
-        func_80070CC4(gobj, 1);
-    }
-}
-
-void ftMario_OnItemVisible(HSD_GObj* gobj) {
-    Fighter* ft = getFighter(gobj);
-
-    if (func_8026B2B4(ft->x1974_heldItem) == 0) {
-        func_80070C48(gobj, 1);
-    }
-}
-
-void ftMario_OnItemRelease(HSD_GObj* gobj, s32 arg1)
-{
-    func_80070FB4(gobj, 1, -1);
-    if (arg1 != 0) {
-        func_80070CC4(gobj, 1);
-    }
-}
+MACRO_ft_OnItemHandling(ftMario, 1);
 
 void ftMario_func_800E0BE4(HSD_GObj* gobj) {
     Fighter* ft;

@@ -1508,4 +1508,26 @@ void Fighter_Unload_8006DABC(Fighter* fighter);
         *attr = backup;                                                      \
     } while(0)
 
+
+#define MACRO_ft_OnItemHandling(FTNAME, param1)               \
+    void FTNAME##_OnItemInvisible(HSD_GObj* gobj) {           \
+        Fighter* ft = getFighter(gobj);                       \
+        if (!func_8026B2B4(ft->x1974_heldItem)) {             \
+            func_80070CC4(gobj, param1);                      \
+        }                                                     \
+    }                                                         \
+    void FTNAME##_OnItemVisible(HSD_GObj* gobj) {             \
+        Fighter* ft = getFighter(gobj);                       \
+        if (!func_8026B2B4(ft->x1974_heldItem)) {             \
+            func_80070C48(gobj, param1);                      \
+        }                                                     \
+    }                                                         \
+    void FTNAME##_OnItemRelease(HSD_GObj* gobj, BOOL bool) {   \
+        func_80070FB4(gobj, param1, -1);                      \
+        if (bool) {                                           \
+            func_80070CC4(gobj, param1);                      \
+        }                                                     \
+    }                                                         \
+
+
 #endif

@@ -23,3 +23,5 @@ void ftMewtwo_OnLoad(HSD_GObj* fighterObj) {
     func_8026B3F8(item_list[0], 0x6E);
     func_8026B3F8(item_list[1], 0x70);
 }
+
+void ftMewtwo_OnItemPickup(HSD_GObj* fighterObj, BOOL bool) {}

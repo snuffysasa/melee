@@ -56,27 +56,7 @@ void ftPikachu_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
     }
 }
 
-
-void ftPikachu_OnItemInvisible(HSD_GObj *fighterObj) {
-    Fighter* fighter = fighterObj->user_data;
-    if (!func_8026B2B4(fighter->x1974_heldItem)) {
-        func_80070CC4(fighterObj, 0);
-    }
-}
-
-void ftPikachu_OnItemVisible(HSD_GObj *fighterObj) {
-    Fighter* fighter = fighterObj->user_data;
-    if (!func_8026B2B4(fighter->x1974_heldItem)) {
-        func_80070C48(fighterObj, 0);
-    }
-}
-
-void ftPikachu_OnItemRelease(HSD_GObj* fighterObj, s32 arg1) {
-    func_80070FB4(fighterObj, 0, -1);
-    if (arg1) {
-        func_80070CC4(fighterObj, 0);
-    }
-}
+MACRO_ft_OnItemHandling(ftPikachu, 0);
 
 void ftPikachu_8012467C(HSD_GObj* fighterObj) {
     s32 unused[2];

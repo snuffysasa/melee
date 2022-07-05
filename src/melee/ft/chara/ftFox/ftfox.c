@@ -50,31 +50,8 @@ void ftFox_OnItemPickup(HSD_GObj* gobj, BOOL arg1)
     }
 }
 
-void ftFox_OnItemInvisible(HSD_GObj* gobj) 
-{
-    Fighter* ft = gobj->user_data;
+MACRO_ft_OnItemHandling(ftFox, 1);
 
-    if (func_8026B2B4(ft->x1974_heldItem) == 0) {
-        func_80070CC4(gobj, 1);
-    }
-}
-
-void ftFox_OnItemVisible(HSD_GObj* gobj) 
-{
-    Fighter* ft = gobj->user_data;
-
-    if (func_8026B2B4(ft->x1974_heldItem) == 0) {
-        func_80070C48(gobj, 1);
-    }
-}
-
-void ftFox_OnItemRelease(HSD_GObj* gobj, s32 arg1) 
-{
-    func_80070FB4(gobj, 1, -1);
-    if (arg1 != 0) {
-        func_80070CC4(gobj, 1);
-    }
-}
 
 void ftFox_OnLoadForFalco(Fighter* ft) 
 {
