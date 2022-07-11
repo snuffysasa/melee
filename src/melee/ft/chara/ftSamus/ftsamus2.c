@@ -219,3 +219,103 @@ void ftSamus_801290A4(HSD_GObj* fighterObj) {
     func_8007D7FC(fighter);
     Fighter_ActionStateChange_800693AC(fighterObj, 0x155, 0x10, 0, fighter->x894_currentAnimFrame, fighter->x89C_frameSpeedMul, 0.0f);
 }
+
+s32 ftSamus_80129100(HSD_GObj* fighterObj, s32* arg1, s32* arg2) {
+
+    if (fighterObj) {
+        Fighter* fighter = fighterObj->user_data;
+        ftSamusAttributes* samus_attr = getFtSpecialAttrs(fighter);
+        if (!fighter->sa.samus.x222C) return -1;
+        
+        *arg1 = fighter->sa.samus.x2230;
+        *arg2 = samus_attr->x18;
+        return 0;
+    }
+    return -1;
+}
+
+s32 ftSamus_80129158(HSD_GObj* fighterObj) {
+    
+    if (fighterObj) {
+        Fighter* fighter = getFighter(fighterObj);
+        s32 action_state_index = fighter->x10_action_state_index;
+        switch (action_state_index) {
+            case 0x157:
+            case 0x158:
+            case 0x159:
+            case 0x15A:
+            case 0x15B:
+            case 0x15C:
+                if (fighter->x2071_b6) {
+                    return 1;
+                }
+            return 0;
+        }
+        
+        return 1;
+    }
+    return 1;
+}
+
+s32 ftSamus_801291A8(HSD_GObj* fighterObj) {
+    if (fighterObj) {
+        Fighter* fighter = getFighter(fighterObj);
+        s32 action_state_index = fighter->x10_action_state_index;
+
+        switch (action_state_index) {
+            case 0x157:
+            case 0x158:
+            case 0x15A:
+            case 0x15B:
+            case 0x15C:
+                return 0;
+        }
+        
+        return 1;
+    }
+    return 1;
+}
+
+void inline ftSamus_801291F0_inner(HSD_GObj* fighterObj) {
+    if (fighterObj) {
+        Fighter* fighter = getFighterPlus(fighterObj);
+        if (fighter->sa.samus.x2234) {
+            efLib_DestroyAll(fighterObj);
+            fighter->sa.samus.x2234 = 0;
+        }
+    }
+}
+
+void ftSamus_801291F0(HSD_GObj* fighterObj) {
+
+    if (fighterObj) {
+        Fighter* fighter = getFighter(fighterObj);
+        if (fighter->sa.samus.x222C) {
+            fighter->sa.samus.x222C = 0;
+        }
+        ftSamus_801291F0_inner(fighterObj);
+    } 
+}
+
+void inline ftSamus_80129258_inner(HSD_GObj* fighterObj) {
+
+    if (fighterObj) {
+        Fighter* fighter = getFighter(fighterObj);
+        if (fighter->sa.samus.x222C) {
+            func_802B5974(fighter->sa.samus.x222C);
+            fighter->sa.samus.x222C = 0;
+        }
+        ftSamus_801291F0_inner(fighterObj);
+    } 
+}
+
+void ftSamus_80129258(HSD_GObj* fighterObj) {
+    
+    if (fighterObj) {
+        Fighter* fighter = getFighter(fighterObj);
+        ftSamus_80129258_inner(fighterObj);
+        fighter->sa.samus.x2230 = 0;
+    }
+}
+
+

@@ -30,5 +30,6 @@ struct UNK_SAMUS_S1 {
     HSD_MatAnimJoint* xC_matanim_joint;
 };
 
+void ftSamus_80128428(HSD_GObj* fighterObj);
 void ftSamus_80129048(HSD_GObj* fighterObj);
 void ftSamus_801290A4(HSD_GObj* fighterObj);
