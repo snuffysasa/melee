@@ -150,7 +150,7 @@ void ftSamus_80129774(HSD_GObj *fighterObj)
   ftSamusAttributes *samus_attr;
   ftSamusAttributes *samus_attr2;
 
-  fighter = fighter2 = getFighter(fighterObj);
+  fighter = fighter2 = getFighterPlus(fighterObj);
   samus_attr = samus_attr2 = getFtSpecialAttrs(fighter);
   if (fighter2->x2208_ftcmd_var2) {
     /// this block might be an inline, but couldn't get the regalloc to behave
@@ -184,9 +184,156 @@ void ftSamus_80129774(HSD_GObj *fighterObj)
 }
 
 void ftSamus_80129940(HSD_GObj* fighterObj) {
+    /// the filler here matches the following function where it is unavoidable
+    /// It's possible to adjust the stack usage of the inline function, but that adjusts the stack usage 
+    /// in the other functions that use it, this seems to be the best fit across all functions in this file
+    s32 unused[4];
     ftSamus_UnkAndDestroyAllEF(fighterObj);
     if (!ftAnim_IsFramesRemaining(fighterObj)) {
         func_8008A2BC(fighterObj);
     }
 }
+
+void ftSamus_801299D0(HSD_GObj* fighterObj) {
+    s32 unused[6];  /// can't get rid of this, must have been something left over from removed code
+    ftSamus_801293BC(fighterObj);
+    if (!ftAnim_IsFramesRemaining(fighterObj)) {
+        func_8008A2BC(fighterObj);
+    }
+}
+
+void ftSamus_80129A14(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    ftSamus_801292E4(fighterObj);
+    fighter->x2340_stateVar1 = 1;
+    if (!ftAnim_IsFramesRemaining(fighterObj)) {
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x15C, 0, NULL, 0.0f, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+    }
+}
+
+void ftSamus_80129A98(HSD_GObj* fighterObj) {
+    Fighter* fighter = getFighter(fighterObj);
+    ftSamusAttributes* samus_attr = getFtSpecialAttrs(fighter);
+    ftSamus_801293BC(fighterObj);
+    if (!ftAnim_IsFramesRemaining(fighterObj)) {
+        if (samus_attr->x24 == 0.0f) {
+            func_800CC730(fighterObj);
+            return;
+        }
+        func_80096900(fighterObj, 1, 0, 1, 1.0f, samus_attr->x24);
+    }
+}
+
+void ftSamus_80129B18(HSD_GObj* fighterObj) {}
+
+void ftSamus_80129B1C(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    HSD_GObj *fighterObj2;
+    if (func_8009917C(fighterObj)) {
+        fighterObj2 = fighterObj;
+        ftSamus_UnkAndDestroyAllEF(fighterObj2);
+    } else {
+        if ((fighter->input.x668 & 0x200)) {
+            Fighter_ActionStateChange_800693AC(fighterObj, 0x15A, 0, NULL, 0.0f, 1.0f, 0.0f);
+            ftSamus_updateDamageDeathCBs(fighterObj);
+            return;
+        }
+        if ((fighter->input.x668 & 0x80000000)) {
+            Fighter_ActionStateChange_800693AC(fighterObj, 0x159, 0, NULL, 0.0f, 1.0f, 0.0f);
+            ftSamus_UnkAndDestroyAllEF(fighterObj);
+            ftSamus_updateDamageDeathCBs(fighterObj);
+        }
+    }
+}
+
+void ftSamus_80129C78(HSD_GObj* fighterObj) {}
+
+void ftSamus_80129C7C(HSD_GObj* fighterObj) {}
+
+void ftSamus_80129C80(HSD_GObj* fighterObj) {}
+
+void ftSamus_80129C84(HSD_GObj* fighterObj) {}
+
+void ftSamus_80129C88(HSD_GObj* fighterObj) {
+    func_80084F3C(fighterObj);
+}
+
+void ftSamus_80129CA8(HSD_GObj* fighterObj) {
+    func_80084F3C(fighterObj);
+}
+
+void ftSamus_80129CC8(HSD_GObj* fighterObj) {
+    func_80084F3C(fighterObj);
+}
+
+void ftSamus_80129CE8(HSD_GObj* fighterObj) {
+    func_80084F3C(fighterObj);
+}
+
+void ftSamus_80129D08(HSD_GObj* fighterObj) {
+    func_80084EEC(fighterObj);
+}
+
+void ftSamus_80129D28(HSD_GObj* fighterObj) {
+    func_80084EEC(fighterObj);
+}
+
+void ftSamus_80129D48(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    if (!func_80082708(fighterObj)) {
+        func_8007D5D4(fighter);
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x15B, 0x0C4C5080, NULL, fighter->x894_currentAnimFrame, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+    }
+}
+
+void ftSamus_80129DC8(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    if (!func_80082708(fighterObj)) {
+        func_8007D5D4(fighter);
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x15C, 0x0C4C5080, NULL, fighter->x894_currentAnimFrame, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+        func_80088148(fighter, 0x3F7B5U, 0x7FU, 0x40U);
+        fighter->x2204_ftcmd_var1 = 1;
+    }
+}
+
+void ftSamus_80129E68(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    if (!func_80082708(fighterObj)) {
+        func_8007D5D4(fighter);
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x15C, 0x0C4C5080, NULL, fighter->x894_currentAnimFrame, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+    }
+}
+
+void ftSamus_80129EE8(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    if (!func_80082708(fighterObj)) {
+        func_8007D5D4(fighter);
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x15C, 0x0C4C5080, NULL, fighter->x894_currentAnimFrame, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+    }
+}
+
+void ftSamus_80129F68(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    if (func_80081D0C(fighterObj) == 1) {
+        func_8007D7FC(fighter);
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x157, 0x0C4C5080, NULL, fighter->x894_currentAnimFrame, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+    }
+}
+
+void ftSamus_80129FE8(HSD_GObj* fighterObj) {
+    Fighter* fighter = fighterObj->user_data;
+    if (func_80081D0C(fighterObj) == 1) {
+        func_8007D7FC(fighter);
+        Fighter_ActionStateChange_800693AC(fighterObj, 0x15A, 0x0C4C5080, NULL, fighter->x894_currentAnimFrame, 1.0f, 0.0f);
+        ftSamus_updateDamageDeathCBs(fighterObj);
+    }
+}
+
+
 

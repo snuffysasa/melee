@@ -12,13 +12,14 @@ typedef struct _ftSamusAttributes {
     f32 x18;
     f32 x1C;
     s32 x20;
-    u8 data_filler_1[0x54 - 0x24];
+    f32 x24;
+    u8 data_filler_1[0x54 - 0x28];
     f32 x54;
     f32 x58;
     u8 data_filler_2[0x78 - 0x5C];
     f32 x78;
-    f32 data_filler_3[2]; 
-    f32 height_attributes[6];  //x84 - x98
+    f32 data_filler_3[2];
+    f32 height_attributes[6];
     u8 data_filler_4[0xD4 - 0x9C];
 } ftSamusAttributes;
 
@@ -40,7 +41,7 @@ inline void ftSamus_SetAttrx2334(HSD_GObj* fighterObj) {
     fighter->sa.samus.x2234 = 0;
 }
 
-void inline ftSamus_destroyAllEF(HSD_GObj* fighterObj) {
+inline void ftSamus_destroyAllEF(HSD_GObj* fighterObj) {
     if (fighterObj) {
         Fighter* fighter = getFighterPlus(fighterObj);
         if (fighter->sa.samus.x2234) {
@@ -50,10 +51,10 @@ void inline ftSamus_destroyAllEF(HSD_GObj* fighterObj) {
     }
 }
 
-void inline ftSamus_UnkAndDestroyAllEF(HSD_GObj* fighterObj) {
+inline void ftSamus_UnkAndDestroyAllEF(HSD_GObj* fighterObj) {
 
     if (fighterObj) {
-        Fighter* fighter = getFighterPlus(fighterObj);
+        Fighter* fighter = fighterObj->user_data;
         u32 x222C = fighter->sa.samus.x222C;
         if (x222C) {
             func_802B5974(x222C);
