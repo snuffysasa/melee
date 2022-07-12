@@ -6455,7 +6455,7 @@ void func_802B1FE8(u32, Vec*);
 // ? func_802B53CC(?);
 // ? func_802B5518(?);
 // ? func_802B55C8(?);
-// ? func_802B56E4(?);
+void func_802B56E4(u32, Vec*, f32, f32, f32);
 // ? func_802B5974(?);
 // ? func_802B5CBC(?);
 // ? func_802B62D0(?);

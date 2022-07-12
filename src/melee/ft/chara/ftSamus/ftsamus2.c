@@ -276,46 +276,5 @@ s32 ftSamus_801291A8(HSD_GObj* fighterObj) {
     return 1;
 }
 
-void inline ftSamus_801291F0_inner(HSD_GObj* fighterObj) {
-    if (fighterObj) {
-        Fighter* fighter = getFighterPlus(fighterObj);
-        if (fighter->sa.samus.x2234) {
-            efLib_DestroyAll(fighterObj);
-            fighter->sa.samus.x2234 = 0;
-        }
-    }
-}
-
-void ftSamus_801291F0(HSD_GObj* fighterObj) {
-
-    if (fighterObj) {
-        Fighter* fighter = getFighter(fighterObj);
-        if (fighter->sa.samus.x222C) {
-            fighter->sa.samus.x222C = 0;
-        }
-        ftSamus_801291F0_inner(fighterObj);
-    } 
-}
-
-void inline ftSamus_80129258_inner(HSD_GObj* fighterObj) {
-
-    if (fighterObj) {
-        Fighter* fighter = getFighter(fighterObj);
-        if (fighter->sa.samus.x222C) {
-            func_802B5974(fighter->sa.samus.x222C);
-            fighter->sa.samus.x222C = 0;
-        }
-        ftSamus_801291F0_inner(fighterObj);
-    } 
-}
-
-void ftSamus_80129258(HSD_GObj* fighterObj) {
-    
-    if (fighterObj) {
-        Fighter* fighter = getFighter(fighterObj);
-        ftSamus_80129258_inner(fighterObj);
-        fighter->sa.samus.x2230 = 0;
-    }
-}
 
 

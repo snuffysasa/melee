@@ -51,8 +51,8 @@ void ftSamus_OnItemDrop(HSD_GObj* fighterObj, BOOL bool1) {
 void ftSamus_80128628(HSD_GObj* fighterObj) {
     Fighter* fighter = getFighter(fighterObj);
     ftSamusAttributes* attr = fighter->x2D4_specialAttributes;
-    f32 attr_value_x18 = attr->x18;
-    if (fighter->sa.samus.x2230 == attr_value_x18) {
+    s32 samus_x2230 = fighter->sa.samus.x2230;
+    if (samus_x2230 == attr->x18) {
         func_800BFFD0(fighter, 0x35, 0);
     }
 }
